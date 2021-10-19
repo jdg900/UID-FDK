@@ -24,16 +24,16 @@ conda activate [your env name]
 ### Synthetic Noise (AWGN)
 Run this command:
 ```
-sh test_awgn_sigma15.sh # AWGN with a noise level = 15
-sh test_awgn_sigma25.sh # AWGN with a noise level = 25
-sh test_awgn_sigma50.sh # AWGN with a noise level = 50
+sh ./scripts/test_awgn_sigma15.sh # AWGN with a noise level = 15
+sh ./scripts/test_awgn_sigma25.sh # AWGN with a noise level = 25
+sh ./scripts/test_awgn_sigma50.sh # AWGN with a noise level = 50
 ```
 
 ### Real-World Noise
 Download the SIDD test dataset for evaluation in [here](https://drive.google.com/drive/folders/1lNet_6YH-sAG3nkR1zb2EKSiFmek7ywQ?usp=sharing) and place the dataset in `./dataset/test` directory.
 After that, run this command:
 ```
-sh test_real.sh
+sh ./scripts/test_real.sh
 ```
 
 ## Pre-trained model
