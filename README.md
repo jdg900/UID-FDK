@@ -49,7 +49,6 @@ checkpoints
 ## Acknowledgements
 This code is built on [U-GAT-IT](https://github.com/znxlwm/UGATIT-pytorch),[CARN](https://github.com/nmhkahn/CARN-pytorch), [SSD-GAN](https://github.com/cyq373/SSD-GAN). We thank the authors for sharing their codes.
 
-We appreciate providing datasets [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/), [CBSD68](https://github.com/clausmichele/CBSD68-dataset), and [SIDD](https://www.eecs.yorku.ca/~kamel/sidd/).
 
 ## Contact
 If you have any questions, feel free to contact me (jdg900@kaist.ac.kr)
