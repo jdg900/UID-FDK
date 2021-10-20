@@ -158,17 +158,18 @@ class Discriminator(nn.Module):
         return self.model(input)
 
 
-# We adopt the Spectral discrimiantor in https://github.com/cyq373/SSD-GAN
+# We adopt the Spectral discrimiantor in https://github.com/cyq373/SSD-GAN1
 class Spectral_Discriminator(nn.Module):
-    def __init__(self):
+    def __init__(self, height):
         super(Spectral_Discriminator, self).__init__()
-        self.linear = nn.Linear(44, 1)
+        self.thresh = int(height / (2*math.sqrt(2)))
+        self.linear = nn.Linear(self.thresh, 1)
     
     def forward(self, input: torch.Tensor):
         az_fft_feature = get_fft_feature(input)
         az_fft_feature[torch.isnan(az_fft_feature)] = 0
         
-        return self.linear(az_fft_feature[:,44:])
+        return self.linear(az_fft_feature[:,-self.thresh:])
 
 
 class Cascading_Block(nn.Module):
