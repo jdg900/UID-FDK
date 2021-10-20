@@ -100,7 +100,7 @@ class UDG(object):
         self.disT = Discriminator(
             input_nc=1, ndf=args.ch_dis, n_layers=args.n_conv_dis
         )
-        self.disS = Spectral_Discriminator()
+        self.disS = Spectral_Discriminator(args.patch_size)
 
         self.genN2C = nn.DataParallel(self.genN2C)
         self.genC2N = nn.DataParallel(self.genC2N)
