@@ -20,6 +20,46 @@ conda env create -n [your env name] -f environment.yaml
 conda activate [your env name]
 ```
 
+## To train the model
+### Synthetic Noise (AWGN)
+1. Download DIV2K dataset for training in [here](https://data.vision.ee.ethz.ch/cvl/DIV2K/)
+2. Randomly split the DIV2K dataset into Clean/Noisy set. Please refer the .txt files in `split_data`.
+3. Place the splitted dataset(DIV2K_C and DIV2K_N) in `./dataset` directory.
+```
+dataset
+└─── DIV2K_C
+└─── DIV2K_N
+└─── Train
+└─── Test
+```
+4. Use `gen_dataset_synthetic.py` to package dataset in the h5py format.
+5. After that, run this command:
+```
+sh train_awgn_sigma15.sh # AWGN with a noise level = 15
+sh train_awgn_sigma25.sh # AWGN with a noise level = 25
+sh train_awgn_sigma50.sh # AWGN with a noise level = 50
+```
+6. After finishing the training, `.pth` file is stored in `./exp/[exp_name]/[seed_number]/saved_models/` directory. 
+
+###  Real-World Noise
+1. Download SIDD-Medium Dataset for training in [here](https://www.eecs.yorku.ca/~kamel/sidd/dataset.php)
+2. Radnomly split the SIDD-Medium Dataset into Clean/Noisy set. Please refer the .txt files in `split_data`.
+3. Place the splitted dataset(SIDD_C and SIDD_N) in `./dataset` directory.
+```
+dataset
+└─── SIDD_C
+└─── SIDD_N
+└─── Train
+└─── Test
+```
+4. Use `gen_dataset_real.py` to package dataset in the h5py format.
+5. After that, run this command:
+```
+sh train_real.sh
+```
+6. After finishing the training, `.pth` file is stored in `./exp/[exp_name]/[seed_number]/saved_models/` directory.
+
+
 ## To evaluate the model
 ### Synthetic Noise (AWGN)
 Run this command:
@@ -30,8 +70,16 @@ sh ./scripts/test_awgn_sigma50.sh # AWGN with a noise level = 50
 ```
 
 ### Real-World Noise
-Download the SIDD test dataset for evaluation in [here](https://drive.google.com/drive/folders/1lNet_6YH-sAG3nkR1zb2EKSiFmek7ywQ?usp=sharing) and place the dataset in `./dataset/test` directory.
-After that, run this command:
+1. Download the SIDD test dataset for evaluation in [here](https://drive.google.com/drive/folders/1lNet_6YH-sAG3nkR1zb2EKSiFmek7ywQ?usp=sharing)
+2. Place the dataset in `./dataset/test` directory.
+```
+dataset
+└─── Train
+└─── Test
+     └─── CBSD68
+     └─── SIDD_test
+```
+3. After that, run this command:
 ```
 sh ./scripts/test_real.sh
 ```
