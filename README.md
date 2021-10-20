@@ -1,6 +1,6 @@
-# Unsupervised-Image-Denoising-With-Frequency-Domain-Knowledge (BMVC 2021 Oral)
+# Unsupervised Image Denoising with Frequency Domain Knowledge (BMVC 2021 Oral) : Official Project Page
 This repository provides the official PyTorch implementation of the following paper:
->**Unsupervised Image Denoising With Frequency Domain Knowledge**
+>**Unsupervised Image Denoising with Frequency Domain Knowledge**
 >
 >Nahyun Kim* (KAIST), Donggon Jang* (KAIST), Sunhyeok Lee (KAIST), Bomi Kim (KAIST), and Dae-Shik Kim (KAIST) (*The authors have equally contributed.)
 >
@@ -35,9 +35,9 @@ dataset
 4. Use `gen_dataset_synthetic.py` to package dataset in the h5py format.
 5. After that, run this command:
 ```
-sh train_awgn_sigma15.sh # AWGN with a noise level = 15
-sh train_awgn_sigma25.sh # AWGN with a noise level = 25
-sh train_awgn_sigma50.sh # AWGN with a noise level = 50
+sh ./scripts/train_awgn_sigma15.sh # AWGN with a noise level = 15
+sh ./scripts/train_awgn_sigma25.sh # AWGN with a noise level = 25
+sh ./scripts/train_awgn_sigma50.sh # AWGN with a noise level = 50
 ```
 6. After finishing the training, `.pth` file is stored in `./exp/[exp_name]/[seed_number]/saved_models/` directory. 
 
@@ -55,7 +55,7 @@ dataset
 4. Use `gen_dataset_real.py` to package dataset in the h5py format.
 5. After that, run this command:
 ```
-sh train_real.sh
+sh ./scripts/train_real.sh
 ```
 6. After finishing the training, `.pth` file is stored in `./exp/[exp_name]/[seed_number]/saved_models/` directory.
 
