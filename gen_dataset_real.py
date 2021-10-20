@@ -48,7 +48,7 @@ if __name__ == "__main__":
     os.makedirs(src_path, exist_ok=True)
     os.makedirs(os.path.dirname(dst_path), exist_ok=True)
 
-    src_files = glob.glob(src_path + "*.PNG") + glob.glob(src_path + "*.png") 
+    src_files = glob.glob(os.path.join(src_path, "*.PNG")) + glob.glob(os.path.join(src_path , "*.png"))
     print("start noisy set...")
     gen_dataset(src_files, dst_path)
     print('end noisy set...')
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     os.makedirs(src_path, exist_ok=True)
     os.makedirs(os.path.dirname(dst_path), exist_ok=True)
 
-    src_files = glob.glob(src_path + "*.PNG") + glob.glob(src_path + "*.png") 
+    src_files = glob.glob(os.path.join(src_path, "*.PNG")) + glob.glob(os.path.join(src_path , "*.png"))
     print("start clean set...")
     gen_dataset(src_files, dst_path)
     print('end clean set')
