@@ -62,7 +62,16 @@ sh ./scripts/train_real.sh
 
 ## To evaluate the model
 ### Synthetic Noise (AWGN)
-Run this command:
+1. Download CBSD68 dataset for evaluation in [here](https://drive.google.com/drive/folders/1lNet_6YH-sAG3nkR1zb2EKSiFmek7ywQ?usp=sharing)
+2. Place the dataset in `./dataset/test` directory.
+```
+dataset
+└─── Train
+└─── Test
+     └─── CBSD68
+     └─── SIDD_test
+```
+3. After that, run this command:
 ```
 sh ./scripts/test_awgn_sigma15.sh # AWGN with a noise level = 15
 sh ./scripts/test_awgn_sigma25.sh # AWGN with a noise level = 25
