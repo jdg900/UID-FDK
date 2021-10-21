@@ -29,7 +29,7 @@ conda activate [your env name]
 dataset
 └─── DIV2K_C
 └─── DIV2K_N
-└─── Test
+└─── test
 ```
 4. Use `gen_dataset_synthetic.py` to package dataset in the h5py format.
 5. After that, run this command:
@@ -48,7 +48,7 @@ sh ./scripts/train_awgn_sigma50.sh # AWGN with a noise level = 50
 dataset
 └─── SIDD_C
 └─── SIDD_N
-└─── Test
+└─── test
 ```
 4. Use `gen_dataset_real.py` to package dataset in the h5py format.
 5. After that, run this command:
@@ -64,8 +64,8 @@ sh ./scripts/train_real.sh
 2. Place the dataset in `./dataset/test` directory.
 ```
 dataset
-└─── Train
-└─── Test
+└─── train
+└─── test
      └─── CBSD68
      └─── SIDD_test
 ```
@@ -81,8 +81,8 @@ sh ./scripts/test_awgn_sigma50.sh # AWGN with a noise level = 50
 2. Place the dataset in `./dataset/test` directory.
 ```
 dataset
-└─── Train
-└─── Test
+└─── train
+└─── test
      └─── CBSD68
      └─── SIDD_test
 ```
