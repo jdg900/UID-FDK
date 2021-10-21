@@ -29,7 +29,6 @@ conda activate [your env name]
 dataset
 └─── DIV2K_C
 └─── DIV2K_N
-└─── Train
 └─── Test
 ```
 4. Use `gen_dataset_synthetic.py` to package dataset in the h5py format.
@@ -49,7 +48,6 @@ sh ./scripts/train_awgn_sigma50.sh # AWGN with a noise level = 50
 dataset
 └─── SIDD_C
 └─── SIDD_N
-└─── Train
 └─── Test
 ```
 4. Use `gen_dataset_real.py` to package dataset in the h5py format.
