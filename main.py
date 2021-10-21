@@ -4,7 +4,7 @@ import random
 import os
 
 from utils import *
-from UDG import UDG
+from UID_FDK import UID_FDK
 
 
 def str2bool(v):
@@ -87,7 +87,7 @@ def main():
 
     prepare(args)
 
-    udg = UDG(args)
+    udg = UID_FDK(args)
 
     udg.build_model(args)
 

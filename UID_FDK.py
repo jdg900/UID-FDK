@@ -18,7 +18,7 @@ import datetime
 import os
 
 
-class UDG(object):
+class UID_FDK(object):
     def __init__(self, args):
         print(args)
 
