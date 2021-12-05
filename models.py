@@ -19,9 +19,9 @@ class Generator_N2C(nn.Module):
         
         self.entry = nn.Conv2d(input_channel, middle_channel, 3, 1, 1)
 
-        self.b1 = Cascading_Block(middle_channel, middle_channel)
-        self.b2 = Cascading_Block(middle_channel, middle_channel)
-        self.b3 = Cascading_Block(middle_channel, middle_channel)
+        self.b1 = Cascading_Block(middle_channel)
+        self.b2 = Cascading_Block(middle_channel)
+        self.b3 = Cascading_Block(middle_channel)
         self.c1 = BasicBlock(middle_channel*2, middle_channel, 1, 1, 0)
         self.c2 = BasicBlock(middle_channel*3, middle_channel, 1, 1, 0)
         self.c3 = BasicBlock(middle_channel*4, middle_channel, 1, 1, 0)
@@ -167,6 +167,7 @@ class Spectral_Discriminator(nn.Module):
     
     def forward(self, input: torch.Tensor):
         az_fft_feature = get_fft_feature(input)
+        import pdb; pdb.set_trace()
         az_fft_feature[torch.isnan(az_fft_feature)] = 0
         
         return self.linear(az_fft_feature[:,-self.thresh:])
