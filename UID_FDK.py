@@ -85,12 +85,16 @@ class UID_FDK(object):
             )
 
         """ Define Generator & Discriminator """
-        self.genN2C = Generator_N2C()
+        self.genN2C = Generator_N2C(
+            input_channel=3,
+            output_channel=3,
+            middle_channel=args.ch_genn2c
+        )
 
         self.genC2N = Generator_C2N(
             input_channel=3, 
             output_channel=3, 
-            middle_channel=args.ch_genn2c, 
+            middle_channel=args.ch_genc2n, 
             n_blocks=args.n_res_gen
         )
 

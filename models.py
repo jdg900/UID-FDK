@@ -11,22 +11,22 @@ from utils import get_fft_feature
 
 # We adopt the network in https://github.com/nmhkahn/CARN-pytorch as the Generator_N2C 
 class Generator_N2C(nn.Module):
-    def __init__(self):
+    def __init__(self, input_channel, output_channel, middle_channel):
         super(Generator_N2C, self).__init__()
 
         self.sub_mean = MeanShift((0.4488, 0.4371, 0.4040), sub=True)
         self.add_mean = MeanShift((0.4488, 0.4371, 0.4040), sub=False)
         
-        self.entry = nn.Conv2d(3, 64, 3, 1, 1)
+        self.entry = nn.Conv2d(input_channel, middle_channel, 3, 1, 1)
 
-        self.b1 = Cascading_Block(64, 64)
-        self.b2 = Cascading_Block(64, 64)
-        self.b3 = Cascading_Block(64, 64)
-        self.c1 = BasicBlock(64*2, 64, 1, 1, 0)
-        self.c2 = BasicBlock(64*3, 64, 1, 1, 0)
-        self.c3 = BasicBlock(64*4, 64, 1, 1, 0)
+        self.b1 = Cascading_Block(middle_channel, middle_channel)
+        self.b2 = Cascading_Block(middle_channel, middle_channel)
+        self.b3 = Cascading_Block(middle_channel, middle_channel)
+        self.c1 = BasicBlock(middle_channel*2, middle_channel, 1, 1, 0)
+        self.c2 = BasicBlock(middle_channel*3, middle_channel, 1, 1, 0)
+        self.c3 = BasicBlock(middle_channel*4, middle_channel, 1, 1, 0)
         
-        self.exit = nn.Conv2d(64, 3, 3, 1, 1)
+        self.exit = nn.Conv2d(middle_channel, output_channel, 3, 1, 1)
                 
     def forward(self, x):
         x = self.sub_mean(x)
@@ -173,17 +173,15 @@ class Spectral_Discriminator(nn.Module):
 
 
 class Cascading_Block(nn.Module):
-    def __init__(self, 
-                 in_channels, out_channels,
-                 group=1):
+    def __init__(self, middle_channel):
         super(Cascading_Block, self).__init__()
 
-        self.b1 = ResidualBlock(64, 64)
-        self.b2 = ResidualBlock(64, 64)
-        self.b3 = ResidualBlock(64, 64)
-        self.c1 = BasicBlock(64*2, 64, 1, 1, 0)
-        self.c2 = BasicBlock(64*3, 64, 1, 1, 0)
-        self.c3 = BasicBlock(64*4, 64, 1, 1, 0)
+        self.b1 = ResidualBlock(middle_channel, middle_channel)
+        self.b2 = ResidualBlock(middle_channel, middle_channel)
+        self.b3 = ResidualBlock(middle_channel, middle_channel)
+        self.c1 = BasicBlock(middle_channel*2, middle_channel, 1, 1, 0)
+        self.c2 = BasicBlock(middle_channel*3, middle_channel, 1, 1, 0)
+        self.c3 = BasicBlock(middle_channel*4, middle_channel, 1, 1, 0)
 
     def forward(self, x):
         c0 = o0 = x

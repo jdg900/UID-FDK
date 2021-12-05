@@ -42,7 +42,8 @@ def parse_args():
 
     parser.add_argument('--n_res_gen', type=int, default=2, help='number of resblock in C2N generator')
     parser.add_argument('--n_conv_dis', type=int, default=3, help='number of layers in N2C discriminator')
-    parser.add_argument('--ch_genn2c', type=int, default=32, help='channel size in N2C generator')
+    parser.add_argument('--ch_genn2c', type=int, default=64, help='channel size in N2C generator')
+    parser.add_argument('--ch_genc2n', type=int, default=32, help='channel size in C2N generator')
     parser.add_argument('--ch_dis', type=int, default=64, help='channel size in discriminator')
     
     parser.add_argument('--adv_w', type=float, default=1.0, help='weight of clean adversarial loss')
