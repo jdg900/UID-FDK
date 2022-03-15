@@ -167,7 +167,6 @@ class Spectral_Discriminator(nn.Module):
     
     def forward(self, input: torch.Tensor):
         az_fft_feature = get_fft_feature(input)
-        import pdb; pdb.set_trace()
         az_fft_feature[torch.isnan(az_fft_feature)] = 0
         
         return self.linear(az_fft_feature[:,-self.thresh:])
